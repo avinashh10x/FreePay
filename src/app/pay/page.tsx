@@ -16,9 +16,11 @@ function PaymentContent() {
   const recipient = searchParams.get("to");
 
   const [customAmount, setCustomAmount] = React.useState("");
+  const [customRecipient, setCustomRecipient] = React.useState("");
   const [uiHint, setUiHint] = React.useState<string | null>(null);
 
   const currentAmount = initialAmount || customAmount;
+  const currentRecipient = recipient || customRecipient;
 
   const {
     connectWallet,
@@ -33,9 +35,9 @@ function PaymentContent() {
 
   const handlePay = async () => {
     if (!currentAmount) return;
-    if (!recipient) {
+    if (!currentRecipient) {
       toast.error("Invalid Configuration", {
-        description: "This link is missing a recipient target address.",
+        description: "Please provide a recipient target address.",
       });
       return;
     }
@@ -43,7 +45,7 @@ function PaymentContent() {
     setUiHint(null);
 
     try {
-      const { hash } = await sendPayment(recipient, currentAmount);
+      const { hash } = await sendPayment(currentRecipient, currentAmount);
       toast.success("Payment successful!");
       router.push(`/success?tx=${hash}`);
     } catch (err: any) {
@@ -78,22 +80,46 @@ function PaymentContent() {
 
       <div className="p-6 sm:p-8 space-y-7 flex flex-col items-center text-center">
 
+        {/* Recipient Field */}
+        <div className="w-full space-y-2">
+          <p className="text-[11px] font-mono text-[#666] uppercase tracking-wider font-bold text-left">
+            Recipient Address
+          </p>
+          <div className="relative group grayscale-[0.5] focus-within:grayscale-0 transition-all">
+            <input
+              type="text"
+              placeholder="0x00...abc"
+              value={currentRecipient}
+              readOnly={!!recipient}
+              onChange={(e) => setCustomRecipient(e.target.value)}
+              className={`w-full bg-[#171717] border border-[#222] rounded-md px-4 py-3.5 text-xs font-mono text-white outline-none transition-all ${
+                recipient ? "opacity-60 cursor-not-allowed border-[#333]" : "focus:border-[#f3b005] group-hover:border-[#333]"
+              }`}
+            />
+            {recipient && (
+              <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#f3b005]/50 animate-pulse" />
+              </div>
+            )}
+          </div>
+        </div>
+
         <div className="space-y-2 w-full">
-          <p className="text-[11px] font-mono text-[#666] uppercase tracking-wider font-bold">
+          <p className="text-[11px] font-mono text-[#666] uppercase tracking-wider font-bold text-left">
             Execution Value
           </p>
           {initialAmount ? (
-            <div className="flex items-baseline justify-center gap-2 py-4">
-              <span className="text-5xl font-bold tracking-tighter text-[#ececec]">
+            <div className="flex items-baseline justify-center gap-2 py-4 bg-[#171717] border border-[#222] rounded-md w-full">
+              <span className="text-4xl font-bold tracking-tighter text-[#ececec]">
                 {initialAmount}
               </span>
-              <span className="text-xl font-mono font-bold text-[#f3b005]">
+              <span className="text-lg font-mono font-bold text-[#f3b005]">
                 STRK
               </span>
             </div>
           ) : (
             <div className="space-y-4 w-full">
-              <div className="relative max-w-xs mx-auto mt-2">
+              <div className="relative w-full mt-2">
                 <input
                   type="number"
                   placeholder="0.00"
