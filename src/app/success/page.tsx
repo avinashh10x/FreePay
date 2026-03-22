@@ -4,7 +4,7 @@ import React, { Suspense, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Check, ExternalLink, ArrowLeft, Zap, ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import { ZapPayLogo } from "@/components/ZapPayLogo";
+import { FreePayLogo } from "@/components/FreePayLogo";
 import { EXPLORER_URLS, STARKZAP_NETWORK } from "@/lib/constants";
 
 function SuccessContent() {
@@ -27,19 +27,19 @@ function SuccessContent() {
   return (
     <div className="w-full border border-[#222222] bg-[#111111] overflow-hidden rounded-xl animate-fadeIn">
       <div className="border-b border-[#222222] bg-[#1a1a1a] px-5 py-3 flex items-center justify-between">
-         <span className="text-[10px] font-mono text-[#888] uppercase tracking-widest font-bold flex items-center gap-2">
-           <Zap className="w-3 h-3 text-[#25D366]"/> Transaction Finalized
-         </span>
-         <span className="text-[10px] font-mono text-[#25D366] uppercase tracking-widest">
-           Success
-         </span>
+        <span className="text-[10px] font-mono text-[#888] uppercase tracking-widest font-bold flex items-center gap-2">
+          <Zap className="w-3 h-3 text-[#25D366]" /> Transaction Finalized
+        </span>
+        <span className="text-[10px] font-mono text-[#25D366] uppercase tracking-widest">
+          Success
+        </span>
       </div>
       <div className="p-6 sm:p-8 space-y-7 flex flex-col items-center text-center">
-        
+
         <div className="w-16 h-16 rounded-full bg-[#25D366]/10 border border-[#25D366]/30 flex items-center justify-center mb-2">
           <Check className="w-8 h-8 text-[#25D366]" />
         </div>
-        
+
         <div className="space-y-2">
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight text-[#ececec]">
             Payment Submitted
@@ -66,7 +66,7 @@ function SuccessContent() {
           >
             Voyager <ExternalLink className="w-4 h-4" />
           </a>
-          
+
           <Link href="/" className="w-full sm:w-auto">
             <button className="w-full flex items-center justify-center gap-2 bg-[#f3b005] hover:bg-[#d49903] text-black font-semibold text-xs px-6 py-4 rounded-md transition-colors uppercase tracking-widest font-mono">
               Home <ArrowLeft className="w-4 h-4" />
@@ -81,13 +81,13 @@ function SuccessContent() {
 export default function SuccessPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#0c0c0c] items-center p-6 sm:p-12 font-sans selection:bg-[#f3b005]/30">
-      
+
       <main className="flex flex-col items-center w-full max-w-xl z-10 animate-fadeIn pt-10">
         <div className="w-full mb-8 flex items-center justify-between">
           <Link href="/" className="text-[#666] hover:text-white transition-colors flex items-center gap-1 text-[11px] font-mono uppercase tracking-widest">
             <ChevronLeft className="w-4 h-4" /> Back to Home
           </Link>
-          <ZapPayLogo className="scale-75 origin-right" />
+          <FreePayLogo className="scale-75 origin-right" />
         </div>
 
         <div className="w-full space-y-6">

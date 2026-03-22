@@ -1,4 +1,4 @@
-export const APP_NAME = "ZapPay";
+export const APP_NAME = "FreePay";
 export const APP_TAGLINE = "Create payment links in seconds";
 export const APP_DESCRIPTION = "Generate crypto payment links and get paid instantly via Starknet";
 

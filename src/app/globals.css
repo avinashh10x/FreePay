@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  /* ZapPay Ultraviolet Design System */
-  
+  /* FreePay Ultraviolet Design System */
+
   /* Core Tints */
   --background: #0a0a0f;
   --foreground: #e4e1e9;
-  
+
   /* Surface Hierarchy */
   --surface: #131318;
   --surface-container-low: #1b1b20;
@@ -21,11 +21,11 @@
   --primary-light: #d2bbff;
   --secondary: #0566d9;
   --secondary-light: #adc6ff;
-  
+
   /* Accents */
   --tertiary: #ffb784;
   --error: #ffb4ab;
-  
+
   /* Borders */
   --outline: #958da1;
   --outline-variant: #4a4455;
@@ -53,6 +53,7 @@ body {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -64,9 +65,17 @@ body {
 }
 
 @keyframes pulse-slow {
-  0% { opacity: 0.8; }
-  50% { opacity: 0.4; }
-  100% { opacity: 0.8; }
+  0% {
+    opacity: 0.8;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
 }
 
 .animate-pulse-slow {

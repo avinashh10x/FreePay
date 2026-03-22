@@ -4,7 +4,7 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
 import { Github, ArrowRight, LinkIcon, Share2, Coins, CheckCircle2 } from "lucide-react";
-import { ZapPayLogo } from "@/components/ZapPayLogo";
+import { FreePayLogo } from "@/components/FreePayLogo";
 import { CreatePaymentForm } from "@/components/CreatePaymentForm";
 
 export default function LandingPage() {
@@ -37,17 +37,17 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav className="w-full bg-[#0e0e0e]/80 backdrop-blur-xl sticky top-0 z-50 border-b border-[#262626]">
         <div className="w-[85%] max-w-7xl mx-auto h-20 flex items-center justify-between">
-          <ZapPayLogo className="scale-90 origin-left" />
+          <FreePayLogo className="scale-90 origin-left" />
 
           <div className="flex items-center gap-6">
-            <Link href="/create">
+            <Link href="/create" className=" px-2 ">
               <button
-                className="text-[11px] font-mono uppercase tracking-widest text-[#adaaaa] hover:text-[#f3b005] transition-colors"
+                className="text-[11px] font-mono uppercase text-[#adaaaa] hover:text-[#f3b005] transition-colors flex items-center gap-2 cursor-pointer"
               >
                 Create Link
               </button>
             </Link>
-            <Link href="https://github.com" target="_blank" className="text-[11px] font-mono uppercase tracking-widest text-[#adaaaa] hover:text-[#f3b005] transition-colors flex items-center gap-2">
+            <Link href="https://github.com" target="_blank" className="text-[11px] font-mono uppercase text-[#adaaaa] hover:text-[#f3b005] transition-colors flex  gap-2">
               <Github className="w-4 h-4" /> GitHub
             </Link>
           </div>
@@ -191,11 +191,13 @@ export default function LandingPage() {
           <div className="text-[11px] font-mono text-[#f3b005] uppercase tracking-widest font-bold">
             Built for Starkzap Challenge
           </div>
-          <div className="text-sm font-sans text-[#adaaaa]">
-            Created by Raavan
+          <div className="text-sm font-sans flex gap-1  text-[#adaaaa]">
+            Created by  <Link href="https://github.com/Avinashh10x" target="_blank" className="text-sm text-[#adaaaa] hover:text-[#f3b005] transition-colors flex items-center gap-2">
+              Avinash
+            </Link>
           </div>
           <div className="mt-2">
-            <Link href="https://github.com" target="_blank" className="text-sm text-[#adaaaa] hover:text-[#f3b005] transition-colors flex items-center gap-2">
+            <Link href="https://github.com/avinashh10x/FreePay.git" target="_blank" className="text-sm text-[#adaaaa] hover:text-[#f3b005] transition-colors flex items-center gap-2">
               <Github className="w-4 h-4" /> GitHub Repository
             </Link>
           </div>

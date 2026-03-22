@@ -4,7 +4,7 @@ import React, { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Wallet, Loader2, ArrowRight, Info, Zap, ChevronLeft } from "lucide-react";
 import { toast } from "sonner";
-import { ZapPayLogo } from "@/components/ZapPayLogo";
+import { FreePayLogo } from "@/components/FreePayLogo";
 import { useStarkZap } from "@/hooks/useStarkZap";
 import Link from "next/link";
 
@@ -14,12 +14,12 @@ function PaymentContent() {
   const initialAmount = searchParams.get("amount");
   const note = searchParams.get("note");
   const recipient = searchParams.get("to");
-  
+
   const [customAmount, setCustomAmount] = React.useState("");
   const [uiHint, setUiHint] = React.useState<string | null>(null);
-  
+
   const currentAmount = initialAmount || customAmount;
-  
+
   const {
     connectWallet,
     isConnected,
@@ -39,23 +39,23 @@ function PaymentContent() {
       });
       return;
     }
-    
+
     setUiHint(null);
-    
+
     try {
       const { hash } = await sendPayment(recipient, currentAmount);
       toast.success("Payment successful!");
       router.push(`/success?tx=${hash}`);
     } catch (err: any) {
       const errStr = JSON.stringify(err, Object.getOwnPropertyNames(err), 2);
-      
+
       if (errStr.includes("u256_sub Overflow") || errStr.includes("argent/multicall-failed")) {
         setUiHint("Insufficient funds detected. Please request tokens from the Sepolia Faucet.");
       } else {
         console.error("UNKNOWN TRANSACTION ERROR ===>", errStr);
         toast.error("Transaction Error", {
-          description: err.message === "Transaction execution error" 
-            ? "The transfer failed to execute on the Starknet sequencer." 
+          description: err.message === "Transaction execution error"
+            ? "The transfer failed to execute on the Starknet sequencer."
             : err.message || "An unknown network error occurred.",
         });
         toast.error("Payment failed. Try again.");
@@ -66,18 +66,18 @@ function PaymentContent() {
   return (
     <div className="w-full border border-[#262626] bg-[#111111] overflow-hidden rounded-2xl shadow-xl animate-fadeIn">
       <div className="border-b border-[#222222] bg-[#1a1a1a] px-5 py-3 flex items-center justify-between">
-         <span className="text-[10px] font-mono text-[#888] uppercase tracking-widest font-bold flex items-center gap-2">
-           <Zap className="w-3 h-3 text-[#f3b005]"/> Authorization Request
-         </span>
-         {!isConnected && (
-            <span className="text-[10px] font-mono text-[#666] uppercase tracking-widest">
-              Awaiting Wallet
-            </span>
-         )}
+        <span className="text-[10px] font-mono text-[#888] uppercase tracking-widest font-bold flex items-center gap-2">
+          <Zap className="w-3 h-3 text-[#f3b005]" /> Authorization Request
+        </span>
+        {!isConnected && (
+          <span className="text-[10px] font-mono text-[#666] uppercase tracking-widest">
+            Awaiting Wallet
+          </span>
+        )}
       </div>
 
       <div className="p-6 sm:p-8 space-y-7 flex flex-col items-center text-center">
-        
+
         <div className="space-y-2 w-full">
           <p className="text-[11px] font-mono text-[#666] uppercase tracking-wider font-bold">
             Execution Value
@@ -121,12 +121,12 @@ function PaymentContent() {
         )}
 
         {recipient && (
-           <div className="w-full px-5 py-3 rounded-md bg-[#171717] border border-[#222]">
-             <span className="block text-[10px] font-mono text-[#666] uppercase tracking-widest mb-1 font-bold text-left">Target Contract Address</span>
-             <p className="text-xs text-[#888] font-mono text-left truncate">
-               {recipient}
-             </p>
-           </div>
+          <div className="w-full px-5 py-3 rounded-md bg-[#171717] border border-[#222]">
+            <span className="block text-[10px] font-mono text-[#666] uppercase tracking-widest mb-1 font-bold text-left">Target Contract Address</span>
+            <p className="text-xs text-[#888] font-mono text-left truncate">
+              {recipient}
+            </p>
+          </div>
         )}
 
         <div className="w-full h-px bg-[#222]" />
@@ -138,9 +138,9 @@ function PaymentContent() {
               <span className="font-mono text-xs text-[#f3b005] uppercase tracking-wider font-bold">System Halt</span>
             </div>
             <p className="text-sm text-[#ececec]">{uiHint}</p>
-            <a 
-              href="https://starknet-faucet.vercel.app/" 
-              target="_blank" 
+            <a
+              href="https://starknet-faucet.vercel.app/"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-mono font-bold hover:underline text-[#f3b005] uppercase tracking-widest"
             >
@@ -170,20 +170,20 @@ function PaymentContent() {
         ) : (
           <div className="w-full space-y-4">
             <div className="w-full py-3 px-4 rounded-md bg-[#171717] border border-[#f3b005]/30 flex items-center justify-between">
-               <div className="flex items-center gap-2">
-                 <div className="w-2 h-2 rounded-full bg-[#f3b005] shrink-0" />
-                 <span className="text-xs font-mono font-bold text-[#ececec] uppercase tracking-widest">Active Link</span>
-               </div>
-               <div className="flex flex-col items-end">
-                 <span className="text-[10px] font-mono text-[#888] truncate max-w-[120px]">
-                   {walletAddress}
-                 </span>
-                 {balance && (
-                   <span className="text-[11px] font-mono font-bold text-[#f3b005]">
-                     Bal: {balance} STRK
-                   </span>
-                 )}
-               </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-[#f3b005] shrink-0" />
+                <span className="text-xs font-mono font-bold text-[#ececec] uppercase tracking-widest">Active Link</span>
+              </div>
+              <div className="flex flex-col items-end">
+                <span className="text-[10px] font-mono text-[#888] truncate max-w-[120px]">
+                  {walletAddress}
+                </span>
+                {balance && (
+                  <span className="text-[11px] font-mono font-bold text-[#f3b005]">
+                    Bal: {balance} STRK
+                  </span>
+                )}
+              </div>
             </div>
 
             <button
@@ -215,13 +215,13 @@ function PaymentContent() {
 export default function PayPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#0c0c0c] items-center p-6 sm:p-12 font-sans selection:bg-[#f3b005]/30">
-      
+
       <main className="flex flex-col items-center w-full max-w-xl z-10 animate-fadeIn pt-10">
         <div className="w-full mb-8 flex items-center justify-between">
           <Link href="/" className="text-[#666] hover:text-white transition-colors flex items-center gap-1 text-[11px] font-mono uppercase tracking-widest">
             <ChevronLeft className="w-4 h-4" /> Back to Home
           </Link>
-          <ZapPayLogo className="scale-75 origin-right" />
+          <FreePayLogo className="scale-75 origin-right" />
         </div>
 
         <div className="w-full space-y-6">

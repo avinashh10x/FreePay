@@ -16,7 +16,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "ZapPay - Crypto Payment Links",
+  title: "FreePay - Crypto Payment Links",
   description: "Create and share crypto payment links in seconds via Starknet.",
 };
 

@@ -1,6 +1,6 @@
 # 🧠 Title
 
-**ZapPay — Crypto Payment Links**
+**FreePay — Crypto Payment Links**
 
 ## 🚨 Problem
 
@@ -8,7 +8,7 @@ Receiving global payments is complex, slow, and requires intermediaries.
 
 ## 💡 Solution
 
-ZapPay enables anyone to create a payment link and receive crypto instantly.
+FreePay enables anyone to create a payment link and receive crypto instantly.
 
 ## ✨ Features
 - Create payment links
@@ -41,9 +41,9 @@ ZapPay enables anyone to create a payment link and receive crypto instantly.
 ## 🧪 Demo
 
 *(Add live link here)*
-<!-- Example: [Live Demo](https://zappay.vercel.app) -->
+<!-- Example: [Live Demo](https://FreePay.vercel.app) -->
 
 ## 📦 GitHub
 
 *(Add repo link here)*
-<!-- Example: [Source Code](https://github.com/YourUsername/zappay) -->
+<!-- Example: [Source Code](https://github.com/YourUsername/FreePay) -->
