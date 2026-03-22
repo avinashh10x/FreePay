@@ -4,7 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
 import { Github, ArrowRight, LinkIcon, Share2, Coins, CheckCircle2 } from "lucide-react";
-import { FreePayLogo } from "@/components/FreePayLogo";
+import { Navbar } from "@/components/Navbar";
+
 export default function LandingPage() {
   const containerVars: Variants = {
     hidden: { opacity: 0 },
@@ -26,25 +27,7 @@ export default function LandingPage() {
       <div className="absolute top-[-10%] left-[20%] w-[60%] h-[500px] rounded-full bg-[#f3b005] opacity-[0.05] blur-[80px] pointer-events-none" />
       <div className="absolute bottom-[20%] right-[-10%] w-[40%] h-[600px] rounded-full bg-[#f3b005] opacity-[0.03] blur-[100px] pointer-events-none" />
 
-      {/* Navigation */}
-      <nav className="w-full bg-[#0e0e0e]/80 backdrop-blur-xl sticky top-0 z-50 border-b border-[#262626]">
-        <div className="w-[85%] max-w-7xl mx-auto h-20 flex items-center justify-between">
-          <FreePayLogo className="scale-90 origin-left" />
-
-          <div className="flex items-center">
-            <Link href="/create">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              transition={{duration: 0.2}}
-                className="bg-[#f3b005] hover:bg-[#e0a005] text-black text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-widest px-4 py-2.5 rounded-md transition-all shadow-lg shadow-[#f3b005]/10 cursor-pointer"
-              >
-                Create Link
-              </motion.button>
-            </Link>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       <main className="w-[85%] max-w-7xl mx-auto flex-1 flex flex-col pt-16 pb-32 z-10">
         <motion.div variants={containerVars} initial="hidden" animate="visible" className="flex flex-col gap-24">
@@ -137,7 +120,7 @@ export default function LandingPage() {
             </motion.div>
 
             <motion.div variants={itemVars} className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-              
+
               {/* Step 1 */}
               <div className="group relative bg-[#131313]/40 backdrop-blur-xl border border-[#262626] hover:border-[#f3b005]/30 rounded-3xl p-10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#f3b005] opacity-0 group-hover:opacity-[0.05] blur-[50px] transition-opacity duration-500" />
@@ -215,18 +198,14 @@ export default function LandingPage() {
       <footer className="w-full bg-[#0e0e0e] border-t border-[#262626] py-12 mt-auto">
         <div className="w-[85%] max-w-7xl mx-auto flex flex-col items-center justify-center gap-4 text-center">
           <div className="text-[11px] font-mono text-[#f3b005] uppercase tracking-widest font-bold">
-            Built for Starkzap Challenge
+            Built for Freelancers you value their time
           </div>
           <div className="text-sm font-sans flex gap-1  text-[#adaaaa]">
             Created by  <Link href="https://github.com/Avinashh10x" target="_blank" className="text-sm text-[#adaaaa] hover:text-[#f3b005] transition-colors flex items-center gap-2">
               Avinash
             </Link>
           </div>
-          <div className="mt-2">
-            <Link href="https://github.com/avinashh10x/FreePay.git" target="_blank" className="text-sm text-[#adaaaa] hover:text-[#f3b005] transition-colors flex items-center gap-2">
-              <Github className="w-4 h-4" /> GitHub Repository
-            </Link>
-          </div>
+
         </div>
       </footer>
     </div>

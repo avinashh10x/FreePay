@@ -2,9 +2,9 @@
 
 import React, { Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Wallet, Loader2, ArrowRight, Info, Zap, ChevronLeft } from "lucide-react";
+import { Wallet, Loader2, ArrowRight, Info, Zap } from "lucide-react";
 import { toast } from "sonner";
-import { FreePayLogo } from "@/components/FreePayLogo";
+import { Navbar } from "@/components/Navbar";
 import { useStarkZap } from "@/hooks/useStarkZap";
 import Link from "next/link";
 
@@ -240,15 +240,11 @@ function PaymentContent() {
 
 export default function PayPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#0c0c0c] items-center p-6 sm:p-12 font-sans selection:bg-[#f3b005]/30">
+    <div className="flex flex-col min-h-screen bg-[#0c0c0c] font-sans selection:bg-[#f3b005]/30">
 
-      <main className="flex flex-col items-center w-full max-w-xl z-10 animate-fadeIn pt-10">
-        <div className="w-full mb-8 flex items-center justify-between">
-          <Link href="/" className="text-[#666] hover:text-white transition-colors flex items-center gap-1 text-[11px] font-mono uppercase tracking-widest">
-            <ChevronLeft className="w-4 h-4" /> Back to Home
-          </Link>
-          <FreePayLogo className="scale-75 origin-right" />
-        </div>
+      <Navbar showBack={true} />
+
+      <main className="flex flex-col items-center w-full max-w-xl mx-auto z-10 animate-fadeIn pt-10 px-6 sm:px-12">
 
         <div className="w-full space-y-6">
           <Suspense fallback={<div className="text-[#888] font-mono text-sm animate-pulse text-center w-full block">Loading execution context...</div>}>
