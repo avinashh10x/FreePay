@@ -1,19 +1,11 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
 import { Github, ArrowRight, LinkIcon, Share2, Coins, CheckCircle2 } from "lucide-react";
 import { FreePayLogo } from "@/components/FreePayLogo";
-import { CreatePaymentForm } from "@/components/CreatePaymentForm";
-
 export default function LandingPage() {
-  const formRef = useRef<HTMLDivElement>(null);
-
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   const containerVars: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -39,16 +31,16 @@ export default function LandingPage() {
         <div className="w-[85%] max-w-7xl mx-auto h-20 flex items-center justify-between">
           <FreePayLogo className="scale-90 origin-left" />
 
-          <div className="flex items-center gap-6">
-            <Link href="/create" className=" px-2 ">
-              <button
-                className="text-[11px] font-mono uppercase text-[#adaaaa] hover:text-[#f3b005] transition-colors flex items-center gap-2 cursor-pointer"
+          <div className="flex items-center">
+            <Link href="/create">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              transition={{duration: 0.2}}
+                className="bg-[#f3b005] hover:bg-[#e0a005] text-black text-[10px] md:text-[11px] font-mono font-bold uppercase tracking-widest px-4 py-2.5 rounded-md transition-all shadow-lg shadow-[#f3b005]/10 cursor-pointer"
               >
                 Create Link
-              </button>
-            </Link>
-            <Link href="https://github.com" target="_blank" className="text-[11px] font-mono uppercase text-[#adaaaa] hover:text-[#f3b005] transition-colors flex  gap-2">
-              <Github className="w-4 h-4" /> GitHub
+              </motion.button>
             </Link>
           </div>
         </div>
@@ -57,15 +49,22 @@ export default function LandingPage() {
       <main className="w-[85%] max-w-7xl mx-auto flex-1 flex flex-col pt-16 pb-32 z-10">
         <motion.div variants={containerVars} initial="hidden" animate="visible" className="flex flex-col gap-24">
 
-          {/* Section 1 & 2: Hero + Payment Form */}
-          <section className="min-h-[80vh] flex flex-col lg:flex-row gap-12 lg:gap-20 items-center justify-between pt-10 lg:pt-16">
+          {/* Section 1 & 2: Hero */}
+          <section className="min-h-[70vh] flex flex-col items-center justify-center text-center pt-10 lg:pt-16">
 
-            {/* LEFT: HERO */}
-            <div className="flex-1 max-w-2xl flex flex-col justify-center space-y-6">
+            {/* HERO TEXT */}
+            <div className="flex-1 max-w-3xl flex flex-col items-center justify-center space-y-6">
+
+              {/* Pre-title */}
+              <motion.div variants={itemVars} className="mb-2">
+                <span className="inline-flex items-center rounded-full border border-[#f3b005]/30 bg-[#f3b005]/10 px-3 py-1 text-[10px] md:text-xs font-mono font-bold text-[#f3b005] uppercase tracking-widest">
+                  Powered by Starknet L2 ⚡
+                </span>
+              </motion.div>
 
               {/* Heading */}
               <motion.div variants={itemVars}>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
                   Get Paid in Crypto <br className="hidden md:block" />
                   via a{" "}
                   <span className="bg-gradient-to-r from-[#ffbe35] to-[#f3b004] bg-clip-text text-transparent">
@@ -77,33 +76,29 @@ export default function LandingPage() {
               {/* Subtitle */}
               <motion.p
                 variants={itemVars}
-                className="text-gray-400 text-base md:text-lg max-w-lg leading-relaxed"
+                className="text-[#adaaaa] text-base md:text-xl max-w-xl leading-relaxed"
               >
                 Create a payment link and receive payments instantly using Starknet.
                 No setup. No friction.
               </motion.p>
 
               {/* CTA */}
-              <motion.div variants={itemVars} className="pt-4">
-                <button
-                  onClick={scrollToForm}
-                  className="inline-flex items-center gap-2 bg-gradient-to-br from-[#f3b005] to-[#e0a005] text-black font-semibold h-[48px] px-6 rounded-md transition-all hover:scale-105 shadow-md"
-                >
-                  Create Payment Link
-                  <ArrowRight className="w-5 h-5" />
-                </button>
+              <motion.div variants={itemVars} className="pt-8">
+                <Link href="/create">
+                  <motion.div
+                    className="inline-flex cursor-pointer items-center justify-center gap-2 bg-gradient-to-br from-[#f3b005] to-[#e0a005] text-black font-semibold h-[48px] rounded-md shadow-md whitespace-nowrap"
+                    initial={{ paddingLeft: "24px", paddingRight: "24px" }}
+                    whileHover={{ paddingLeft: "48px", paddingRight: "48px" }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 12 }}
+                  >
+                    Create Payment Link
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.div>
+                </Link>
               </motion.div>
 
             </div>
-
-            {/* RIGHT: FORM */}
-            <motion.div
-              variants={itemVars}
-              className="w-full max-w-md"
-              ref={formRef}
-            >
-              <CreatePaymentForm />
-            </motion.div>
 
           </section>
 
