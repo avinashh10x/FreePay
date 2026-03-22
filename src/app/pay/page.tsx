@@ -154,7 +154,7 @@ function PaymentContent() {
             <button
               onClick={connectWallet}
               disabled={isConnecting}
-              className="w-full h-[48px] bg-[#ececec] hover:bg-white disabled:bg-[#333] disabled:text-[#666] disabled:cursor-not-allowed text-black font-semibold text-sm px-6 rounded-md transition-colors flex items-center justify-center gap-2"
+              className="w-full h-[48px] cursor-pointer bg-[#ececec] hover:bg-white disabled:bg-[#333] disabled:text-[#666] disabled:cursor-not-allowed text-black font-semibold text-sm px-6 rounded-md transition-colors flex items-center justify-center gap-2"
             >
               {isConnecting ? (
                 <Loader2 className="w-5 h-5 animate-spin" />

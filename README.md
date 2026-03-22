@@ -9,7 +9,9 @@ FreePay is a lightweight, link-first crypto payment infrastructure that enables 
 FreePay simplifies crypto payments into a single, shareable link. There is no complex setup and no need for intermediaries. Simply create a payment link, share it, and receive funds instantly.
 
 [Home Page](/public/home.png)
-
+[Create Page](/public/create.png)
+[Pay Page](/public/pay.png)
+[Success Page](/public/success.png)
 ---
 
 ## Problem Statement

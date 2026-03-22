@@ -82,8 +82,8 @@ export default function LandingPage() {
                 No setup. No friction.
               </motion.p>
 
-              {/* CTA */}
-              <motion.div variants={itemVars} className="pt-8">
+              {/* CTA Group */}
+              <motion.div variants={itemVars} className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Link href="/create">
                   <motion.div
                     className="inline-flex cursor-pointer items-center justify-center gap-2 bg-gradient-to-br from-[#f3b005] to-[#e0a005] text-black font-semibold h-[48px] rounded-md shadow-md whitespace-nowrap"
@@ -94,6 +94,15 @@ export default function LandingPage() {
                   >
                     Create Payment Link
                     <ArrowRight className="w-5 h-5" />
+                  </motion.div>
+                </Link>
+                <Link href="/pay">
+                  <motion.div
+                    className="inline-flex cursor-pointer items-center justify-center gap-2 h-[48px] px-8 rounded-md bg-[#171717] border border-[#262626] text-[#adaaaa] hover:text-[#f3b005] hover:border-[#f3b005] transition-all font-semibold"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Execute Payment
                   </motion.div>
                 </Link>
               </motion.div>
@@ -118,38 +127,60 @@ export default function LandingPage() {
           </motion.section>
 
           {/* Section 4: How it Works */}
-          <section className="space-y-12 py-12 border-t border-[#262626]">
-            <motion.div variants={itemVars} className="text-left md:text-center space-y-4">
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#ffffff]">How it Works</h2>
+          <section className="relative space-y-16 py-24 border-t border-[#262626] overflow-hidden">
+            {/* Section Glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#f3b005]/[0.02] rounded-full blur-[120px] pointer-events-none" />
+
+            <motion.div variants={itemVars} className="text-center space-y-4 relative z-10">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white">How it Works</h2>
+              <p className="text-[#adaaaa] max-w-lg mx-auto">Get paid in three simple steps using Starknet's high-performance infrastructure.</p>
             </motion.div>
 
-            <motion.div variants={itemVars} className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-
+            <motion.div variants={itemVars} className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+              
               {/* Step 1 */}
-              <div className="bg-[#131313] border border-[#262626] rounded-2xl p-8 space-y-5 relative z-10 text-left md:text-center flex flex-col items-start md:items-center">
-                <div className="w-14 h-14 bg-[#262626] border border-[#484847] rounded-xl flex items-center justify-center mb-2 shadow-lg">
-                  <LinkIcon className="w-6 h-6 text-[#f3b005]" />
+              <div className="group relative bg-[#131313]/40 backdrop-blur-xl border border-[#262626] hover:border-[#f3b005]/30 rounded-3xl p-10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#f3b005] opacity-0 group-hover:opacity-[0.05] blur-[50px] transition-opacity duration-500" />
+                <div className="text-[10px] font-mono text-[#f3b005] bg-[#f3b005]/10 px-4 py-1.5 rounded-full uppercase tracking-widest font-bold mb-8">
+                  Step 01
                 </div>
-                <h3 className="text-xl font-bold text-[#ffffff]">1. Create a payment link</h3>
-                <p className="text-[#adaaaa] text-sm">Fill out the amount and metadata. Connect your wallet for lightning-fast setup.</p>
+                <div className="w-20 h-20 rounded-2xl bg-[#1a1a1a] border border-[#262626] group-hover:border-[#f3b005]/20 flex items-center justify-center mb-8 shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:shadow-[#f3b005]/5">
+                  <LinkIcon className="w-8 h-8 text-[#f3b005]" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Create Link</h3>
+                <p className="text-[#adaaaa] text-sm leading-relaxed">
+                  Enter payment details and metadata. Connect your wallet to automatically set the target.
+                </p>
               </div>
 
               {/* Step 2 */}
-              <div className="bg-[#131313] border border-[#262626] rounded-2xl p-8 space-y-5 relative z-10 text-left md:text-center flex flex-col items-start md:items-center md:mt-8">
-                <div className="w-14 h-14 bg-[#262626] border border-[#484847] rounded-xl flex items-center justify-center mb-2 shadow-lg">
-                  <Share2 className="w-6 h-6 text-[#f3b005]" />
+              <div className="group relative bg-[#131313]/40 backdrop-blur-xl border border-[#262626] hover:border-[#f3b005]/30 rounded-3xl p-10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden md:mt-12">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#f3b005] opacity-0 group-hover:opacity-[0.05] blur-[50px] transition-opacity duration-500" />
+                <div className="text-[10px] font-mono text-[#f3b005] bg-[#f3b005]/10 px-4 py-1.5 rounded-full uppercase tracking-widest font-bold mb-8">
+                  Step 02
                 </div>
-                <h3 className="text-xl font-bold text-[#ffffff]">2. Share it with anyone</h3>
-                <p className="text-[#adaaaa] text-sm">Copy the URL or scan the dynamic QR code natively from the interface.</p>
+                <div className="w-20 h-20 rounded-2xl bg-[#1a1a1a] border border-[#262626] group-hover:border-[#f3b005]/20 flex items-center justify-center mb-8 shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:shadow-[#f3b005]/5">
+                  <Share2 className="w-8 h-8 text-[#f3b005]" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Share Anywhere</h3>
+                <p className="text-[#adaaaa] text-sm leading-relaxed">
+                  Distribute your link via WhatsApp, Socials or QR. No app required for payer execution.
+                </p>
               </div>
 
               {/* Step 3 */}
-              <div className="bg-[#131313] border border-[#262626] rounded-2xl p-8 space-y-5 relative z-10 text-left md:text-center flex flex-col items-start md:items-center md:mt-16">
-                <div className="w-14 h-14 bg-[#262626] border border-[#484847] rounded-xl flex items-center justify-center mb-2 shadow-lg">
-                  <Coins className="w-6 h-6 text-[#f3b005]" />
+              <div className="group relative bg-[#131313]/40 backdrop-blur-xl border border-[#262626] hover:border-[#f3b005]/30 rounded-3xl p-10 transition-all duration-500 hover:-translate-y-3 flex flex-col items-center text-center overflow-hidden md:mt-24">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-[#f3b005] opacity-0 group-hover:opacity-[0.05] blur-[50px] transition-opacity duration-500" />
+                <div className="text-[10px] font-mono text-[#f3b005] bg-[#f3b005]/10 px-4 py-1.5 rounded-full uppercase tracking-widest font-bold mb-8">
+                  Step 03
                 </div>
-                <h3 className="text-xl font-bold text-[#ffffff]">3. Get paid instantly</h3>
-                <p className="text-[#adaaaa] text-sm">Transactions settle immediately via Starknet's high speed L2 execution.</p>
+                <div className="w-20 h-20 rounded-2xl bg-[#1a1a1a] border border-[#262626] group-hover:border-[#f3b005]/20 flex items-center justify-center mb-8 shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:shadow-[#f3b005]/5">
+                  <Coins className="w-8 h-8 text-[#f3b005]" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Receive Funds</h3>
+                <p className="text-[#adaaaa] text-sm leading-relaxed">
+                  Payments settle instantly via Starknet. Funds are deposited directly to your non-custodial wallet.
+                </p>
               </div>
 
             </motion.div>

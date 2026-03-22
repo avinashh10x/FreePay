@@ -93,7 +93,7 @@ export function CreatePaymentForm() {
             {!isConnected ? (
               <button 
                 onClick={connectWallet}
-                className="text-[10px] font-mono text-[#f3b005] hover:text-[#d49903] flex items-center gap-1 font-bold transition-colors uppercase tracking-widest"
+                className="text-[10px] font-mono cursor-pointer text-[#f3b005] hover:text-[#d49903] flex items-center gap-1 font-bold transition-colors uppercase tracking-widest"
                 title="Connect Cartridge to automatically fill your address"
               >
                 <Wallet className="w-3 h-3" /> Connect Wallet
