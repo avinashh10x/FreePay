@@ -94,18 +94,21 @@ export default function LandingPage() {
 
           </section>
 
-          {/* Section 3: Demo Video Placeholder */}
-          <motion.section variants={itemVars} className="w-full rounded-2xl border border-[#262626] bg-[#111111] shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden relative group">
-            <div className="w-full pb-[56.25%] relative bg-[#171717]">
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                {/* Replace this div with your <video> or <iframe> tag later */}
-                <div className="w-20 h-20 rounded-full bg-[#f3b005]/10 flex items-center justify-center border border-[#f3b005]/20 group-hover:scale-110 group-hover:bg-[#f3b005]/20 transition-all cursor-pointer">
-                  <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-[#f3b005] border-b-[12px] border-b-transparent ml-2" />
-                </div>
-                <span className="text-[11px] font-mono text-[#666] uppercase tracking-widest font-bold">
-                  Dummy Video Space (16:9 Landscape)
-                </span>
-              </div>
+          {/* Section 3: Demo Video */}
+          <motion.section 
+            variants={itemVars} 
+            className="w-full rounded-2xl border border-[#262626] bg-[#111111] shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden relative"
+          >
+            <div className="w-full pb-[56.25%] relative bg-[#000]">
+              <video 
+                src="https://res.cloudinary.com/dsr8rjhoc/video/upload/v1774200554/free_pay_v3_wmgzhw.mp4"
+                className="absolute aspect-video inset-0 w-full h-full object-cover"
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                controls={false}
+              />
             </div>
           </motion.section>
 

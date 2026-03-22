@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/logo.png" alt="FreePay Logo" width="200" />
+</p>
+
 # FreePay — Crypto Payment Links
 
 FreePay is a lightweight, link-first crypto payment infrastructure that enables anyone to receive payments globally using Starknet and Starkzap.
@@ -8,10 +12,13 @@ FreePay is a lightweight, link-first crypto payment infrastructure that enables 
 
 FreePay simplifies crypto payments into a single, shareable link. There is no complex setup and no need for intermediaries. Simply create a payment link, share it, and receive funds instantly.
 
-[Home Page](/public/home.png)
-[Create Page](/public/create.png)
-[Pay Page](/public/pay.png)
-[Success Page](/public/success.png)
+| Home Page | Create Page |
+| :---: | :---: |
+| ![Home Page](public/home.png) | ![Create Page](public/create.png) |
+
+| Pay Page | Success Page |
+| :---: | :---: |
+| ![Pay Page](public/pay.png) | ![Success Page](public/success.png) |
 ---
 
 ## Problem Statement
@@ -97,16 +104,6 @@ This project demonstrates practical abstractions built on top of the Starkzap SD
 *   **Mobile-First:** Fully responsive design optimized for mobile web interactions.
 *   **Stateless Architecture:** Operates entirely client-side; no backend database required.
 *   **Frictionless UX:** Reduces the number of clicks required from link generation to payment execution.
-
----
-
-## Hackathon Context
-
-This application was developed as a submission for the **Starkzap Developer Challenge**, engineered with a focus on:
-
-*   Real-world utility and adoption.
-*   Robust integration of the Starkzap SDK.
-*   Establishing a clean, usable UX standard for decentralized payments.
 
 ---
 
