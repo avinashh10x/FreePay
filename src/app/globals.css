@@ -1,8 +1,34 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ZapPay Ultraviolet Design System */
+  
+  /* Core Tints */
+  --background: #0a0a0f;
+  --foreground: #e4e1e9;
+  
+  /* Surface Hierarchy */
+  --surface: #131318;
+  --surface-container-low: #1b1b20;
+  --surface-container: #1f1f25;
+  --surface-container-high: #2a292f;
+  --surface-container-highest: #35343a;
+  --surface-variant: #35343a;
+  --surface-lowest: #0e0e13;
+
+  /* Primary Gradient / Brand */
+  --primary: #7c3aed;
+  --primary-light: #d2bbff;
+  --secondary: #0566d9;
+  --secondary-light: #adc6ff;
+  
+  /* Accents */
+  --tertiary: #ffb784;
+  --error: #ffb4ab;
+  
+  /* Borders */
+  --outline: #958da1;
+  --outline-variant: #4a4455;
 }
 
 @theme inline {
@@ -12,15 +38,37 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animations that are very useful for premium feel */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-fadeIn {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulse-slow {
+  0% { opacity: 0.8; }
+  50% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
 }
